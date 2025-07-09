@@ -47,6 +47,7 @@ async def split_into_teams(bot, draft_session_id):
 
                 if sign_ups:
                     # Get list of sign-up keys and shuffle it
+                    
                     sign_ups_list = list(sign_ups.keys())
                     random.shuffle(sign_ups_list)
                     
@@ -55,6 +56,14 @@ async def split_into_teams(bot, draft_session_id):
                     shuffled_sign_ups = {}
                     for user_id in sign_ups_list:
                         shuffled_sign_ups[user_id] = sign_ups[user_id]
+
+                    # The slaxx contingency
+                    munsons = { "sandydog", "cam01", "larrydavidyo"}
+                    if "slaxsk" in sign_ups_list and len(munsons.intersection(set(sign_ups_list))>0:
+                        slaxx_contingency = True
+                    else:
+                        slaxx_contingency = False
+                        
                     
                     # Create teams by alternating players
                     team_a = sign_ups_list[0::2]  # Elements at indices 0, 2, 4, etc.
